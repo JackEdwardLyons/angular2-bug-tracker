@@ -1,9 +1,12 @@
 import { NgModule }     from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
+// Components
+import { BugListComponent } from './bug-list/bug-list.component';
+
 @NgModule({
     imports:      [ SharedModule ],
-    declarations: [ ],
+    declarations: [ BugListComponent ],
     exports:      [ ],
     providers:    [ ]
 }) // no semicolon here -->
