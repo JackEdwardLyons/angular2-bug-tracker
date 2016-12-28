@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>Skeleton Project</h1>'
+    template: '<h1>Bugged Out Angular 2 App</h1>'
 })
 export class AppComponent { }
