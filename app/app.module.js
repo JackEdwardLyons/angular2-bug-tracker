@@ -15,13 +15,14 @@ var bug_module_1 = require('./bug/bug.module');
 var app_routing_module_1 = require('./app-routing.module');
 // import Components
 var app_component_1 = require('./app.component');
+var navbar_component_1 = require('./navbar/navbar.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, bug_module_1.BugModule, app_routing_module_1.AppRoutingModule],
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
