@@ -21,7 +21,9 @@ var BugRoutingModule = (function () {
                 // use child with path redirection for homepage
                 router_1.RouterModule.forChild([
                     { path: '', redirectTo: 'bugs', pathMatch: 'full' },
-                    { path: 'bugs', component: bug_list_component_1.BugListComponent }
+                    { path: 'bugs', component: bug_list_component_1.BugListComponent },
+                    // Wildcard Route
+                    { path: '**', redirectTo: 'bugs' }
                 ])
             ],
             exports: [router_1.RouterModule]

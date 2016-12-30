@@ -8,8 +8,10 @@ import { BugListComponent } from './bug-list/bug-list.component';
     imports: [ 
         // use child with path redirection for homepage
         RouterModule.forChild([
-            { path: '', redirectTo: 'bugs', pathMatch: 'full' },
-            { path: 'bugs', component: BugListComponent }
+            { path: '',     redirectTo: 'bugs', pathMatch: 'full' },
+            { path: 'bugs', component: BugListComponent },
+            // Wildcard Route
+            { path: '**',   redirectTo: 'bugs' }
         ]) 
     ],
     exports: [ RouterModule ]
