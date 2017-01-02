@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component }             from '@angular/core';
+// Testing purposes only. re: firebase
+import { FirebaseConfigService } from './core/service/firebase-config.service';
 
 @Component({
     selector: 'app',
@@ -16,4 +18,9 @@ import { Component } from '@angular/core';
         }
     `]
 })
-export class AppComponent { }
+export class AppComponent {
+    // initialize firebase for testing purposes only
+    constructor(private service: FirebaseConfigService) {
+        
+    }
+ }

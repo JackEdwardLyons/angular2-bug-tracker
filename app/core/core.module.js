@@ -13,10 +13,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 /* Core Module
  * Before this module is initialized it will check if another instance exists.
- * Only ONE instance of the Core Module can exist.
+ * Only ONE instance of the Core Module can exist. (ie) Singleton
  * Be sure to import into the Root Module of the app (AppModule)
  */
 var core_1 = require('@angular/core');
+// Services
+var firebase_config_service_1 = require('./service/firebase-config.service');
 var CoreModule = (function () {
     function CoreModule(parentModule) {
         // if this module exists...
@@ -28,8 +30,8 @@ var CoreModule = (function () {
     CoreModule.forRoot = function () {
         return {
             ngModule: CoreModule,
-            // FireBase service provided here
-            providers: []
+            // FireBase service provided here and it is now a Singleton (ie) only one instance created
+            providers: [firebase_config_service_1.FirebaseConfigService]
         };
     };
     CoreModule = __decorate([

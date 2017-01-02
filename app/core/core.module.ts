@@ -1,9 +1,11 @@
 /* Core Module 
  * Before this module is initialized it will check if another instance exists.
- * Only ONE instance of the Core Module can exist.
+ * Only ONE instance of the Core Module can exist. (ie) Singleton 
  * Be sure to import into the Root Module of the app (AppModule)
  */
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+// Services
+import { FirebaseConfigService } from './service/firebase-config.service';
 
 @NgModule({
     imports:      [],
@@ -24,8 +26,8 @@ export class CoreModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: CoreModule,
-            // FireBase service provided here
-            providers: [ ]
+            // FireBase service provided here and it is now a Singleton (ie) only one instance created
+            providers: [ FirebaseConfigService ]
         };
     }
 }
