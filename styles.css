@@ -1,0 +1,21 @@
+/* Global Stylesheet */
+
+h1 {
+    color: #34434B;
+}
+
+.btn {
+    border-radius: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .24);
+}
+
+.btn-success {
+    background-color: #A09474;
+    border-color: #A09474;
+}
+
+.btn-success:hover,
+.btn-success:disabled {
+    background-color: #ACA286;
+    border-color: #ACA286;
+}
