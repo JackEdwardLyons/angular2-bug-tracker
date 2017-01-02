@@ -1,5 +1,9 @@
-import { NgModule }     from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+/* This is a Feature Module 
+   While we can do everything within the root module, feature modules help us 
+   partition the app into areas of specific interest and purpose.
+*/
+import { NgModule }         from '@angular/core';
+import { SharedModule }     from '../shared/shared.module';
 import { BugRoutingModule } from './bug-routing.module';
 
 // Components

@@ -8,6 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/* This is a Feature Module
+   While we can do everything within the root module, feature modules help us
+   partition the app into areas of specific interest and purpose.
+*/
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
 var bug_routing_module_1 = require('./bug-routing.module');
