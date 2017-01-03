@@ -11,16 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 // Integrate all of the Firebase SDK from the firebase module
 var firebase = require('firebase');
+require('firebase/database');
 // Constants 
 var constants_1 = require('../constant/constants');
 var FirebaseConfigService = (function () {
     function FirebaseConfigService() {
         this.configureApp();
+        this.configureDatabase();
     }
     FirebaseConfigService.prototype.configureApp = function () {
         // initialize firebase
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
-        console.log(firebase);
+    };
+    FirebaseConfigService.prototype.configureDatabase = function () {
+        // ensure that other parts of the system can use firebase
+        this.database = firebase.database();
     };
     FirebaseConfigService = __decorate([
         core_1.Injectable(), 
