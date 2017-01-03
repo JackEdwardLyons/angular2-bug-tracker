@@ -8,12 +8,14 @@ import { BugRoutingModule } from './bug-routing.module';
 
 // Components
 import { BugListComponent } from './bug-list/bug-list.component';
+// Service
+import { BugService } from './service/bug.service';
 
 @NgModule({
     imports:      [ SharedModule, BugRoutingModule ],
     declarations: [ BugListComponent ],
     exports:      [ ],
-    providers:    [ ]
+    providers:    [ BugService ]
 }) // no semicolon here -->
 /* Decorators are expressions that return a function. (ie) decorator is not a statement. 
    Statements tell the compiler to do things, and need semi-colons (or new lines) to be stopped. 

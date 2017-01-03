@@ -12,6 +12,14 @@ var core_1 = require('@angular/core');
 // Integrate all of the Firebase SDK from the firebase module
 var firebase = require('firebase');
 require('firebase/database');
+/* Firebase notes
+ * Setup API endpoint listeners up at the lowest possible endpoint
+ * This will preserve data usage and increase speed.
+ * Events:
+ *  - Child Added ( added objects/data of the children within the endpoint )
+ *  - Child Changed ( updated data )
+ *  - Child Removed ( reacts to a child being deleted )
+ */
 // Constants 
 var constants_1 = require('../constant/constants');
 var FirebaseConfigService = (function () {

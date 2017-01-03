@@ -9,9 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+// Services
+var bug_service_1 = require('../service/bug.service');
 var BugListComponent = (function () {
-    function BugListComponent() {
+    // subscribe to the BugService
+    function BugListComponent(bugService) {
+        this.bugService = bugService;
     }
+    BugListComponent.prototype.ngOnInit = function () {
+        this.getAddedBugs();
+    };
+    BugListComponent.prototype.getAddedBugs = function () {
+        this.bugService.getAddedBugs()
+            .subscribe(function (bug) {
+            console.log(bug);
+        }, function (err) {
+            console.error('Unable to get added bug:', err);
+        });
+    };
     BugListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -19,7 +34,7 @@ var BugListComponent = (function () {
             templateUrl: 'bug-list.component.html',
             styleUrls: ['bug-list.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [bug_service_1.BugService])
     ], BugListComponent);
     return BugListComponent;
 }());
