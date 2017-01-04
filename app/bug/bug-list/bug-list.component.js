@@ -15,14 +15,18 @@ var BugListComponent = (function () {
     // subscribe to the BugService
     function BugListComponent(bugService) {
         this.bugService = bugService;
+        // create an empty array to store bugs that are added to the database
+        this.bugs = [];
     }
     BugListComponent.prototype.ngOnInit = function () {
         this.getAddedBugs();
     };
     BugListComponent.prototype.getAddedBugs = function () {
+        var _this = this;
         this.bugService.getAddedBugs()
             .subscribe(function (bug) {
-            console.log(bug);
+            _this.bugs.push(bug);
+            console.log(_this.bugs);
         }, function (err) {
             console.error('Unable to get added bug:', err);
         });
