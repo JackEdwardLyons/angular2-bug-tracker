@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
     templateUrl: 'bug-detail.component.html',
     styleUrls: [ 'bug-detail.component.css' ]
 })
-export class BugDetailComponent  { }
+export class BugDetailComponent  { 
+
+    private modalId = "bugModal";
+}
