@@ -17,11 +17,17 @@ import { FIREBASE_CONFIG } from '../constant/constants';
 @Injectable()
 export class FirebaseConfigService {
     // reference the database to allow other parts of system to have access
-    public database: firebase.database.Database;
+    // make database variable private so it cannot be modified
+    private _database: firebase.database.Database;
 
     constructor() {
         this.configureApp();
         this.configureDatabase();
+    }
+
+    // create a getter method to retreive private database data
+    public get database() {
+        return this._database;
     }
 
     configureApp() {
@@ -30,7 +36,7 @@ export class FirebaseConfigService {
     }
 
     configureDatabase() {
-        // ensure that other parts of the system can use firebase
-        this.database = firebase.database();
+        // ensure that other parts of the system can use private firebase data
+        this._database = firebase.database();
     }
 }

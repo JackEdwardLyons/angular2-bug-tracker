@@ -27,13 +27,21 @@ var FirebaseConfigService = (function () {
         this.configureApp();
         this.configureDatabase();
     }
+    Object.defineProperty(FirebaseConfigService.prototype, "database", {
+        // create a getter method to retreive private database data
+        get: function () {
+            return this._database;
+        },
+        enumerable: true,
+        configurable: true
+    });
     FirebaseConfigService.prototype.configureApp = function () {
         // initialize firebase
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
     };
     FirebaseConfigService.prototype.configureDatabase = function () {
-        // ensure that other parts of the system can use firebase
-        this.database = firebase.database();
+        // ensure that other parts of the system can use private firebase data
+        this._database = firebase.database();
     };
     FirebaseConfigService = __decorate([
         core_1.Injectable(), 
