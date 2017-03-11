@@ -2,9 +2,10 @@
    While we can do everything within the root module, feature modules help us 
    partition the app into areas of specific interest and purpose.
 */
-import { NgModule }         from '@angular/core';
-import { SharedModule }     from '../shared/shared.module';
-import { BugRoutingModule } from './bug-routing.module';
+import { NgModule }           from '@angular/core';
+import { SharedModule }       from '../shared/shared.module';
+import { BugRoutingModule }   from './bug-routing.module';
+import { ReactiveFormsModule} from '@angular/forms';
 
 // Components
 import { BugListComponent }   from './bug-list/bug-list.component';
@@ -14,7 +15,7 @@ import { BugDetailComponent } from './bug-detail/bug-detail.component';
 import { BugService } from './service/bug.service';
 
 @NgModule({
-    imports:      [ SharedModule, BugRoutingModule ],
+    imports:      [ SharedModule, BugRoutingModule, ReactiveFormsModule ],
     declarations: [ BugListComponent, BugDetailComponent ],
     exports:      [ ],
     providers:    [ BugService ]

@@ -19,3 +19,35 @@ h1 {
     background-color: #ACA286;
     border-color: #ACA286;
 }
+
+.btn-xl {
+    padding: 1.2rem 3rem;
+}
+
+.btn-primary {
+    background-color: #34434B;
+    border-color: #34434B;
+}
+
+.btn-primary:hover,
+.btn-primary:disabled {
+    background-color: #3F515A;
+    border-color: #3F515A;
+}
+
+.form-control {
+    border-radius: 0;
+    font-weight: lighter;
+}
+
+select {
+    text-transform: uppercase;
+    border: none !important;
+    height: 3.5rem !important;
+    -webkit-appearance: none;
+}
+
+textarea {
+    background-color: #F7F7F7 !important;
+    resize: none;
+}

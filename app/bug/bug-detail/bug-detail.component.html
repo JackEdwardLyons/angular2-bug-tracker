@@ -3,15 +3,16 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form>
+
                 <div class="modal-body">
                    <fieldset class="form-inline">
-                       <div class="form-group">
+                       <div class="form-group" id="title-form-group">
                            <label for="title-field" class="sr-only">Bug Title</label>
-                           <input id="text-field" type="text" class="form-control" placeholder="Bug Title">
+                           <input id="title-field" type="text" class="form-control" placeholder="Bug Title">
                        </div>
                        <div class="form-group float-xs-right">
                            <label for="status-dropdown" class="sr-only">Status</label>
-                           <select id="status-dropdown" class="form-control">
+                           <select id="status-dropdown" class="form-control btn btn-primary">
                                <option value="1">Logged</option>
                                <option value="2">Recreated</option>
                                <option value="3">In Progress</option>
@@ -20,7 +21,8 @@
                            </select>
                        </div>
                    </fieldset>
-                   <div class="form-group col-md-3" id="severity-form-group">
+
+                   <div class="form-group float-xs-left" id="severity-form-group">
                        <label for="severity-dropdown" class="sr-only">Severity Dropdown</label>
                        <select id="severity-dropdown" class="form-control">
                            <option value="1">Severe</option>
@@ -29,14 +31,15 @@
                            <option value="4">Cosmetic</option>
                        </select>
                    </div>
-                   <div class="form-control">
+                   <div class="form-group">
                        <label for="desc-area" class="sr-only">Description</label>
                        <textarea id="desc-area" rows="10" class="form-control" placeholder="Enter bug description here."></textarea>
                    </div>
                 </div>
+                <!-- end Modal Body -->
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-xl" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-secondary btn-xl" type="submit" data-dismiss="modal">Save</button>
+                    <button class="btn btn-s btuccess btn-xl" type="submit" data-dismiss="modal">Save</button>
                 </div>
             </form>
         </div>
