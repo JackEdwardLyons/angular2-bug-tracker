@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -21,12 +21,13 @@ export class BugDetailComponent implements OnInit {
         // which create specific fields within
         // the Bug description form.
         this.bugForm = new FormGroup({
-            // set default values in FormControl 
-            title: new FormControl(),
+            // set default values in FormControl with the
+            // first parameter, and validation in the second
+            title: new FormControl(null, Validators.required),
             // select initial as first value
-            status: new FormControl(1),
-            severity: new FormControl(1),
-            description: new FormControl()
+            status: new FormControl(1, Validators.required),
+            severity: new FormControl(1, Validators.required),
+            description: new FormControl(null, Validators.required)
         });
     }
 
