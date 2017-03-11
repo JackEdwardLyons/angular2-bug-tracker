@@ -3,7 +3,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <!-- Bind form properties using FormGroup & formControlName -->
-            <form [formGroup]="bugForm">
+            <form [formGroup]="bugForm" #form>
+                <!-- there are 3 main form states to be aware of: 
+                ng-invalid / valid, ng-pristine / dirty, -ng-touched / untouched -->
                 <div class="modal-body">
                    <fieldset class="form-inline">
                        <div class="form-group" id="title-form-group">
