@@ -29,4 +29,8 @@ export class BugDetailComponent implements OnInit {
             description: new FormControl()
         });
     }
+
+    submitForm() {
+        console.log(this.bugForm); // in the console look at the _value property
+    }
 }
