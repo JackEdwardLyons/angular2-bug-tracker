@@ -22,9 +22,11 @@ var BugDetailComponent = (function () {
         // which create specific fields within
         // the Bug description form.
         this.bugForm = new forms_1.FormGroup({
+            // set default values in FormControl 
             title: new forms_1.FormControl(),
-            status: new forms_1.FormControl(),
-            severity: new forms_1.FormControl(),
+            // select initial as first value
+            status: new forms_1.FormControl(1),
+            severity: new forms_1.FormControl(1),
             description: new forms_1.FormControl()
         });
     };

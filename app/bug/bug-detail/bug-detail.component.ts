@@ -21,9 +21,11 @@ export class BugDetailComponent implements OnInit {
         // which create specific fields within
         // the Bug description form.
         this.bugForm = new FormGroup({
+            // set default values in FormControl 
             title: new FormControl(),
-            status: new FormControl(),
-            severity: new FormControl(),
+            // select initial as first value
+            status: new FormControl(1),
+            severity: new FormControl(1),
             description: new FormControl()
         });
     }
