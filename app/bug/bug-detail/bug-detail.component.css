@@ -37,3 +37,21 @@
   text-align: center;
   padding-bottom: 4rem;
 }
+
+/* Validation Styles 
+ * -------------------
+ * By default the form has the invalid class until it is 
+ * touched. That is where the ng-dirty class comes in as
+ * it keeps track when the user touches the form. (ie)
+ * Once the form is touched, it is dirty.
+*/
+textarea.ng-invalid.ng-dirty {
+  border-color: #C62828;
+  transition: border-color 0.2s ease;
+}
+
+#title-field.ng-invalid.ng-dirty {
+  border-left: 5px solid #C62828;
+  padding-left: 5px;
+  transition: border-width 0.2s ease;
+}

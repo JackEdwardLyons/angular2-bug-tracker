@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ForbiddenStringValidator } from '../../shared/validation/forbidden-string.validator';
 
 @Component({
     moduleId: module.id,
