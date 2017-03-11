@@ -14,6 +14,7 @@ var Observable_1 = require('rxjs/Observable');
 var firebase_config_service_1 = require('../../core/service/firebase-config.service');
 // inject an instance of Firebase
 var BugService = (function () {
+    // require FireBase in constructor
     function BugService(fire) {
         this.fire = fire;
         // points to our database endpoint
@@ -32,6 +33,18 @@ var BugService = (function () {
                 obs.throw(err);
             });
         });
+    }; // end getAddedBugs
+    BugService.prototype.addBug = function (bug) {
+        // create a reference to each new bug Object
+        var newBugRef = this.bugsDbRef.push();
+        newBugRef.set({
+            title: bug.title,
+            status: bug.status,
+            severity: bug.severity,
+            description: bug.description,
+            createdBy: 'Jack Lyons',
+            createdDate: Date.now()
+        }, function (err) { return console.error('Unable to add bug to firebase', err); });
     };
     BugService = __decorate([
         core_1.Injectable(), 

@@ -26,7 +26,7 @@ var BugDetailComponent = (function () {
          * which create specific fields within
          * the Bug description form.
          */
-        /* Method 1: Using imported FormBuilder Component
+        /* Method 1: Using imported FormBuilder Class
          *************************************************/
         this.bugForm = this.formB.group({
             title: [null, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]],

@@ -27,7 +27,7 @@ export class BugDetailComponent implements OnInit {
          * the Bug description form.
          */
 
-        /* Method 1: Using imported FormBuilder Component
+        /* Method 1: Using imported FormBuilder Class
          *************************************************/
         this.bugForm = this.formB.group({
             title:       [null, [Validators.required, forbiddenStringValidator(/puppy/i)]],

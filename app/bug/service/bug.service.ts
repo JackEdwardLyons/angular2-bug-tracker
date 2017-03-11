@@ -10,7 +10,7 @@ import { Bug } from '../model/bug';
 export class BugService {
     // points to our database endpoint
     private bugsDbRef = this.fire.database.ref('/bugs');
-    
+    // require FireBase in constructor
     constructor(private fire: FirebaseConfigService) { }
 
     // listen for child added in DB
@@ -26,5 +26,19 @@ export class BugService {
                 obs.throw(err);
             });
         });
+    } // end getAddedBugs
+
+    addBug(bug: Bug) {
+        // create a reference to each new bug Object
+        const newBugRef = this.bugsDbRef.push();
+        newBugRef.set({
+            title: bug.title,
+            status: bug.status,
+            severity: bug.severity,
+            description: bug.description,
+            createdBy: 'Jack Lyons',
+            createdDate: Date.now()
+        }, 
+        err => console.error('Unable to add bug to firebase', err));
     }
 }
