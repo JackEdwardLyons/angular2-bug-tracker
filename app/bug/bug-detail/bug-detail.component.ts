@@ -26,6 +26,7 @@ export class BugDetailComponent implements OnInit {
         this.configureForm();
     }
 
+
     configureForm(bug?: Bug) {
         /* Demonstrating two methods to creating Reactive Forms 
          * This is an example of Reactive forms 
@@ -68,21 +69,35 @@ export class BugDetailComponent implements OnInit {
         }); */
     }
 
+
     submitForm() {
-        console.log(this.bugForm); // in the console look at the _value property
-        this.addBug();
-    }
-    
-    addBug() {
         // create a Bug Object from our form that we can add via the Bug Service
+        // createdBy / createdDate are set in the Service itself
         this.currentBug.title       = this.bugForm.value['title'];
         this.currentBug.status      = this.bugForm.value['status'];
         this.currentBug.severity    = this.bugForm.value['severity'];
         this.currentBug.description = this.bugForm.value['description'];
-        // createdBy / createdDate are set in the Service itself
+        // when submitting a bug for the first time the bug Object has an id of null
+        // this makes it easier to update the bug as an id will be set from the DB
+        // once entered.
+        if (this.currentBug.id) {
+            this.updateBug();
+        } else {
+            this.addBug();
+        }
+    }
+    
+
+    addBug() {
         this.bugService.addBug(this.currentBug);
         this.refreshForm();
     }
+
+
+    updateBug() {
+        this.refreshForm();
+    }
+
 
     refreshForm() {
         // new Angular reset method
@@ -92,6 +107,7 @@ export class BugDetailComponent implements OnInit {
         });
         this.cleanBug();
     }
+
 
     cleanBug() {
         this.currentBug = new Bug(null, null, 1, 1, null, null, null, null, null)

@@ -58,17 +58,27 @@ var BugDetailComponent = (function () {
         }); */
     };
     BugDetailComponent.prototype.submitForm = function () {
-        console.log(this.bugForm); // in the console look at the _value property
-        this.addBug();
-    };
-    BugDetailComponent.prototype.addBug = function () {
         // create a Bug Object from our form that we can add via the Bug Service
+        // createdBy / createdDate are set in the Service itself
         this.currentBug.title = this.bugForm.value['title'];
         this.currentBug.status = this.bugForm.value['status'];
         this.currentBug.severity = this.bugForm.value['severity'];
         this.currentBug.description = this.bugForm.value['description'];
-        // createdBy / createdDate are set in the Service itself
+        // when submitting a bug for the first time the bug Object has an id of null
+        // this makes it easier to update the bug as an id will be set from the DB
+        // once entered.
+        if (this.currentBug.id) {
+            this.updateBug();
+        }
+        else {
+            this.addBug();
+        }
+    };
+    BugDetailComponent.prototype.addBug = function () {
         this.bugService.addBug(this.currentBug);
+        this.refreshForm();
+    };
+    BugDetailComponent.prototype.updateBug = function () {
         this.refreshForm();
     };
     BugDetailComponent.prototype.refreshForm = function () {
