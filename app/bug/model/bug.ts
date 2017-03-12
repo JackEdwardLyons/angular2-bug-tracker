@@ -4,7 +4,7 @@ export class Bug {
         public title:        string,
         public status:       number,
         public severity:     number,
-        public description:  number,
+        public description:  string,
         public createdBy:    string,
         public createdDate:  number,
         public updatedBy?:   string,

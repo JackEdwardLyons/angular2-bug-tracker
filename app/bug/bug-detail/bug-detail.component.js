@@ -34,7 +34,7 @@ var BugDetailComponent = (function () {
          * the Bug description form.
          */
         if (bug) {
-            this.currentBug = bug;
+            this.currentBug = new bug_1.Bug(bug.id, bug.title, bug.status, bug.severity, bug.description, bug.createdBy, bug.createdDate, bug.updatedBy, bug.updatedDate);
         }
         /* Method 1: Using imported FormBuilder Class
          *************************************************/
