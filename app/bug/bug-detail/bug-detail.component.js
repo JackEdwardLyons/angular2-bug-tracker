@@ -77,6 +77,10 @@ var BugDetailComponent = (function () {
             status: 1,
             severity: 1
         });
+        this.cleanBug();
+    };
+    BugDetailComponent.prototype.cleanBug = function () {
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     };
     __decorate([
         core_1.Input(), 

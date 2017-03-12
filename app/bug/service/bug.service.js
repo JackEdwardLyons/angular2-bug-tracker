@@ -28,12 +28,15 @@ var BugService = (function () {
             _this.bugsDbRef.on('child_added', function (bug) {
                 // .val() extracts the structure of the Bug Model and creates a JS object
                 var newBug = bug.val();
+                // collect id for each bug in the DB
+                newBug.id = bug.key;
                 obs.next(newBug);
             }, function (err) {
                 obs.throw(err);
             });
         });
-    }; // end getAddedBugs
+    }; // end getAddedBugs() 
+    // Add new Bug
     BugService.prototype.addBug = function (bug) {
         // create a reference to each new bug Object
         var newBugRef = this.bugsDbRef.push();
@@ -46,7 +49,7 @@ var BugService = (function () {
             createdDate: Date.now()
         })
             .catch(function (err) { return console.error('Unable to add bug to firebase', err); });
-    };
+    }; // end addBug() 
     BugService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [firebase_config_service_1.FirebaseConfigService])

@@ -13,21 +13,26 @@ export class BugService {
     // require FireBase in constructor
     constructor(private fire: FirebaseConfigService) { }
 
+
     // listen for child added in DB
     getAddedBugs(): Observable<any> {
         return Observable.create(obs => {
             // reference the DB service and every bug added
             this.bugsDbRef.on('child_added', bug => {
-                 // .val() extracts the structure of the Bug Model and creates a JS object
+                // .val() extracts the structure of the Bug Model and creates a JS object
                 const newBug = bug.val() as Bug;
+                // collect id for each bug in the DB
+                newBug.id = bug.key;
                 obs.next(newBug);
             }, 
             err => {
                 obs.throw(err);
             });
         });
-    } // end getAddedBugs
+    } // end getAddedBugs() 
 
+
+    // Add new Bug
     addBug(bug: Bug) {
         // create a reference to each new bug Object
         const newBugRef = this.bugsDbRef.push();
@@ -40,5 +45,5 @@ export class BugService {
             createdDate: Date.now()
         })
         .catch(err => console.error('Unable to add bug to firebase', err));
-    }
+    } // end addBug() 
 }
