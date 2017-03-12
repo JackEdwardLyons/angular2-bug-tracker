@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var forbidden_string_validator_1 = require('../../shared/validation/forbidden-string.validator');
+<<<<<<< HEAD
 var bug_service_1 = require('../service/bug.service');
 var bug_1 = require('../model/bug');
 var BugDetailComponent = (function () {
@@ -24,6 +25,14 @@ var BugDetailComponent = (function () {
     }
     /* Methods
      * * * * * */
+=======
+var BugDetailComponent = (function () {
+    // Inject the FormBuilder module
+    function BugDetailComponent(formB) {
+        this.formB = formB;
+        this.modalId = "bugModal";
+    }
+>>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
     BugDetailComponent.prototype.ngOnInit = function () {
         this.configureForm();
     };
@@ -55,6 +64,7 @@ var BugDetailComponent = (function () {
     };
     BugDetailComponent.prototype.submitForm = function () {
         console.log(this.bugForm); // in the console look at the _value property
+<<<<<<< HEAD
         this.addBug();
     };
     BugDetailComponent.prototype.addBug = function () {
@@ -71,6 +81,9 @@ var BugDetailComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], BugDetailComponent.prototype, "currentBug", void 0);
+=======
+    };
+>>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
     BugDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -78,7 +91,11 @@ var BugDetailComponent = (function () {
             templateUrl: 'bug-detail.component.html',
             styleUrls: ['bug-detail.component.css']
         }), 
+<<<<<<< HEAD
         __metadata('design:paramtypes', [forms_1.FormBuilder, bug_service_1.BugService])
+=======
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
+>>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
     ], BugDetailComponent);
     return BugDetailComponent;
 }());
