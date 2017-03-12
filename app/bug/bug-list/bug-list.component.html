@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-6">
+        <h1>Logged Bugs</h1>
+    </div>
+    <div class="col-xs-6 text-xs-right">
+        <!-- Attribute binding with Angular template reference variable to modal box below -->
+        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Bug
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Severity</th>
+                    <th>Description</th>
+                    <th>Logged by</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- reference the modal id using the template reference variable set in modal below 
+                     This will allow the user to click the table row and edit directly
+                -->
+                <tr *ngFor="let bug of bugs" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
+                    <td>{{ bug.title }}</td>
+                    <td>{{ bug.status }}</td>
+                    <td>{{ bug.severity }}</td>
+                    <td>{{ bug.description }}</td>
+                    <td>{{ bug.createdBy }}</td>
+                    <td>{{ bug.createdDate }}</td>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Bug detail modal box 
+     Template Reference Variable to match Modal Id
+-->
+<bug-detail #bugDetail></bug-detail>

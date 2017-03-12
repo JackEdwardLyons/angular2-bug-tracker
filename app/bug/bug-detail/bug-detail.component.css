@@ -1,0 +1,57 @@
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-body {
+  padding: 2.5rem 5rem;
+}
+
+#title-form-group {
+  margin-top: 1rem;
+}
+
+#title-field {
+  font-size: 1.3rem;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  text-transform: uppercase;
+}
+
+#title-field, 
+#severity-dropdown {
+  padding: 0;
+}
+
+#severity-form-group {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+#severity-dropdown {
+  margin: 1rem 0 1.5rem 0;
+  color: #CCC;
+}
+
+.modal-footer {
+  border: none;
+  text-align: center;
+  padding-bottom: 4rem;
+}
+
+/* Validation Styles 
+ * -------------------
+ * By default the form has the invalid class until it is 
+ * touched. That is where the ng-dirty class comes in as
+ * it keeps track when the user touches the form. (ie)
+ * Once the form is touched, it is dirty.
+*/
+textarea.ng-invalid.ng-dirty {
+  border-color: #C62828;
+  transition: border-color 0.2s ease;
+}
+
+#title-field.ng-invalid.ng-dirty {
+  border-left: 5px solid #C62828;
+  padding-left: 5px;
+  transition: border-width 0.2s ease;
+}

@@ -1,0 +1,56 @@
+<!-- Create a unique id that is stored within the Component.ts file -->
+<div class="modal fade" [id]="modalId"> 
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <!-- Bind form properties using FormGroup & formControlName -->
+            <form [formGroup]="bugForm" #form>
+                <!-- there are 3 main form states to be aware of: 
+                ng-invalid / valid, ng-pristine / dirty, -ng-touched / untouched -->
+                <div class="modal-body">
+                   <fieldset class="form-inline">
+                       <div class="form-group" id="title-form-group">
+                           <label for="title-field" class="sr-only">Bug Title</label>
+                           <input id="title-field" type="text" class="form-control" placeholder="Bug Title" 
+                                  formControlName="title"><!-- title from bugForm -->
+                       </div>
+                       <div class="form-group float-xs-right">
+                           <label for="status-dropdown" class="sr-only">Status</label>
+                           <select id="status-dropdown" class="form-control btn btn-primary"
+                                   formControlName="status"><!-- status from bugForm -->
+                               <option value="1">Logged</option>
+                               <option value="2">Recreated</option>
+                               <option value="3">In Progress</option>
+                               <option value="4">Fixed</option>
+                               <option value="5">Declined</option>
+                           </select>
+                       </div>
+                   </fieldset>
+
+                   <div class="form-group float-xs-left" id="severity-form-group">
+                       <label for="severity-dropdown" class="sr-only">Severity Dropdown</label>
+                       <select id="severity-dropdown" class="form-control" 
+                               formControlName="severity"><!-- severity from bugForm -->
+                           <option value="1">Severe</option>
+                           <option value="2">Medium</option>
+                           <option value="3">Low</option>
+                           <option value="4">Cosmetic</option>
+                       </select>
+                   </div>
+                   <div class="form-group">
+                       <label for="desc-area" class="sr-only">Description</label>
+                       <textarea id="desc-area" rows="10" class="form-control" 
+                                 placeholder="Enter bug description here." 
+                                 formControlName="description"><!-- description from bugForm -->
+                       </textarea>
+                   </div>
+                </div>
+                <!-- end Modal Body -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-xl" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success btn-xl" type="submit" data-dismiss="modal" (click)="submitForm()">Save</button>
+                </div>
+            </form>
+             <!-- end Form -->
+        </div>
+    </div>
+</div>

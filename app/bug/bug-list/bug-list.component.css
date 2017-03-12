@@ -1,0 +1,20 @@
+h1 {
+    margin-bottom: 2rem;
+}
+
+thead th {
+    border-top: none;
+    border-bottom: 1px solid #34434B;
+}
+
+th, td {
+    font-weight: lighter;
+}
+
+td {
+    border-bottom: .5px solid rgba(52, 67, 75, 0.1);
+}
+
+i {
+    padding-right: 0.5rem;
+}
