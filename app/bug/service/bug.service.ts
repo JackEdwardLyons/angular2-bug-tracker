@@ -46,4 +46,14 @@ export class BugService {
         })
         .catch(err => console.error('Unable to add bug to firebase', err));
     } // end addBug() 
+
+
+    // Update bug records to DB
+    updateBug(bug: Bug) {
+        const currentBugRef = this.bugsDbRef.child(bug.id);
+        bug.id = null;
+        bug.updatedBy = 'Jack Lyons';
+        bug.updatedDate = Date.now();
+        currentBugRef.update(bug);
+    } // end updateBug() 
 }

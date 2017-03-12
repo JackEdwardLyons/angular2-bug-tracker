@@ -50,6 +50,14 @@ var BugService = (function () {
         })
             .catch(function (err) { return console.error('Unable to add bug to firebase', err); });
     }; // end addBug() 
+    // Update bug records to DB
+    BugService.prototype.updateBug = function (bug) {
+        var currentBugRef = this.bugsDbRef.child(bug.id);
+        bug.id = null;
+        bug.updatedBy = 'Jack Lyons';
+        bug.updatedDate = Date.now();
+        currentBugRef.update(bug);
+    }; // end updateBug() 
     BugService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [firebase_config_service_1.FirebaseConfigService])
