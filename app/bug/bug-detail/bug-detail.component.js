@@ -65,6 +65,14 @@ var BugDetailComponent = (function () {
         this.currentBug.description = this.bugForm.value['description'];
         // createdBy / createdDate are set in the Service itself
         this.bugService.addBug(this.currentBug);
+        this.refreshForm();
+    };
+    BugDetailComponent.prototype.refreshForm = function () {
+        // new Angular reset method
+        this.bugForm.reset({
+            status: 1,
+            severity: 1
+        });
     };
     __decorate([
         core_1.Input(), 

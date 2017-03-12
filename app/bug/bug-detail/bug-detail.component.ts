@@ -11,12 +11,10 @@ import { Bug } from '../model/bug';
     styleUrls: [ 'bug-detail.component.css' ]
 })
 export class BugDetailComponent implements OnInit { 
-
     private modalId = "bugModal";
     private bugForm: FormGroup;
     // Create a new instance of Bug with temporary placeholders
     @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null)
-
     // Inject the FormBuilder module and Bug Service
     constructor(private formB: FormBuilder, private bugService: BugService) { }
     
@@ -69,7 +67,15 @@ export class BugDetailComponent implements OnInit {
         this.currentBug.description = this.bugForm.value['description'];
         // createdBy / createdDate are set in the Service itself
         this.bugService.addBug(this.currentBug);
-        
+        this.refreshForm();
+    }
+
+    refreshForm() {
+        // new Angular reset method
+        this.bugForm.reset({
+            status: 1,
+            severity: 1
+        });
     }
 
 }
