@@ -19,27 +19,31 @@ var BugDetailComponent = (function () {
         this.formB = formB;
         this.bugService = bugService;
         this.modalId = "bugModal";
-        // Create a new instance of Bug with temporary placeholders
-        this.currentBug = new bug_1.Bug(null, null, null, null, null, null, null, null, null);
+        // Create a new instance of Bug with temporary placeholders & initial values
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     }
     /* Methods
      **********/
     BugDetailComponent.prototype.ngOnInit = function () {
         this.configureForm();
     };
-    BugDetailComponent.prototype.configureForm = function () {
+    BugDetailComponent.prototype.configureForm = function (bug) {
         /* Demonstrating two methods to creating Reactive Forms
          * This is an example of Reactive forms
          * which create specific fields within
          * the Bug description form.
          */
+        if (bug) {
+            this.currentBug = bug;
+        }
         /* Method 1: Using imported FormBuilder Class
          *************************************************/
         this.bugForm = this.formB.group({
-            title: [null, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]],
-            status: [1, forms_1.Validators.required],
-            severity: [1, forms_1.Validators.required],
-            description: [null, forms_1.Validators.required]
+            // change initial values to link to the currentBug property values
+            title: [this.currentBug.title, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]],
+            status: [this.currentBug.status, forms_1.Validators.required],
+            severity: [this.currentBug.severity, forms_1.Validators.required],
+            description: [this.currentBug.description, forms_1.Validators.required]
         });
         /* Method 2: Creating a new FormGroup and FormControl Object
          ************************************************************

@@ -32,5 +32,4 @@ export class BugListComponent implements OnInit {
             });
     }
 
-
  }

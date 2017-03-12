@@ -27,7 +27,10 @@
                 <!-- reference the modal id using the template reference variable set in modal below 
                      This will allow the user to click the table row and edit directly
                 -->
-                <tr *ngFor="let bug of bugs" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
+                <tr *ngFor="let bug of bugs" 
+                    [attr.data-target]=" '#' + bugDetail.modalId " 
+                    data-toggle="modal"
+                    (click)="bugDetail.configureForm(bug)">
                     <td>{{ bug.title }}</td>
                     <td>{{ bug.status }}</td>
                     <td>{{ bug.severity }}</td>

@@ -13,8 +13,9 @@ import { Bug } from '../model/bug';
 export class BugDetailComponent implements OnInit { 
     private modalId = "bugModal";
     private bugForm: FormGroup;
-    // Create a new instance of Bug with temporary placeholders
-    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null)
+
+    // Create a new instance of Bug with temporary placeholders & initial values
+    @Input() currentBug = new Bug(null, null, 1, 1, null, null, null, null, null)
     // Inject the FormBuilder module and Bug Service
     constructor(private formB: FormBuilder, private bugService: BugService) { }
     
@@ -25,20 +26,23 @@ export class BugDetailComponent implements OnInit {
         this.configureForm();
     }
 
-    configureForm() {
+    configureForm(bug?: Bug) {
         /* Demonstrating two methods to creating Reactive Forms 
          * This is an example of Reactive forms 
          * which create specific fields within
          * the Bug description form.
          */
-
+        if (bug) {
+            this.currentBug = bug;
+        }
         /* Method 1: Using imported FormBuilder Class
          *************************************************/
         this.bugForm = this.formB.group({
-            title:       [null, [Validators.required, forbiddenStringValidator(/puppy/i)]],
-            status:      [1, Validators.required],
-            severity:    [1, Validators.required],
-            description: [null, Validators.required]
+            // change initial values to link to the currentBug property values
+            title:       [this.currentBug.title, [Validators.required, forbiddenStringValidator(/puppy/i)]],
+            status:      [this.currentBug.status, Validators.required],
+            severity:    [this.currentBug.severity, Validators.required],
+            description: [this.currentBug.description, Validators.required]
         });
 
         /* Method 2: Creating a new FormGroup and FormControl Object
