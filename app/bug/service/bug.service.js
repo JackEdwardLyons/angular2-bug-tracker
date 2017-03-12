@@ -36,6 +36,18 @@ var BugService = (function () {
             });
         });
     }; // end getAddedBugs() 
+    BugService.prototype.changedListener = function () {
+        var _this = this;
+        return Observable_1.Observable.create(function (obs) {
+            _this.bugsDbRef.on('child_changed', function (bug) {
+                var updatedBug = bug.val();
+                updatedBug.id = bug.key;
+                obs.next(updatedBug);
+            }, function (err) {
+                obs.throw(err);
+            });
+        });
+    };
     // Add new Bug
     BugService.prototype.addBug = function (bug) {
         // create a reference to each new bug Object

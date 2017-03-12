@@ -85,17 +85,17 @@ export class BugDetailComponent implements OnInit {
         } else {
             this.addBug();
         }
+        this.refreshForm();
     }
     
 
     addBug() {
         this.bugService.addBug(this.currentBug);
-        this.refreshForm();
     }
 
 
     updateBug() {
-        this.refreshForm();
+        this.bugService.updateBug(this.currentBug);
     }
 
 

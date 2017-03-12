@@ -73,13 +73,13 @@ var BugDetailComponent = (function () {
         else {
             this.addBug();
         }
+        this.refreshForm();
     };
     BugDetailComponent.prototype.addBug = function () {
         this.bugService.addBug(this.currentBug);
-        this.refreshForm();
     };
     BugDetailComponent.prototype.updateBug = function () {
-        this.refreshForm();
+        this.bugService.updateBug(this.currentBug);
     };
     BugDetailComponent.prototype.refreshForm = function () {
         // new Angular reset method

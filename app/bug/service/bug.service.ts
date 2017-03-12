@@ -31,6 +31,20 @@ export class BugService {
         });
     } // end getAddedBugs() 
 
+    
+    changedListener(): Observable<any> {
+        return Observable.create(obs => {
+            this.bugsDbRef.on('child_changed', bug => {
+                const updatedBug = bug.val() as Bug;
+                updatedBug.id = bug.key;
+                obs.next(updatedBug);
+            }, 
+            err => {
+                obs.throw(err);
+            });
+        });
+    }
+
 
     // Add new Bug
     addBug(bug: Bug) {
