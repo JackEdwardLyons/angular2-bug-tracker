@@ -11,28 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var forbidden_string_validator_1 = require('../../shared/validation/forbidden-string.validator');
-<<<<<<< HEAD
 var bug_service_1 = require('../service/bug.service');
 var bug_1 = require('../model/bug');
 var BugDetailComponent = (function () {
-    // Inject the FormBuilder and BugService components
-    function BugDetailComponent(formB, BugService) {
+    // Inject the FormBuilder module and Bug Service
+    function BugDetailComponent(formB, bugService) {
         this.formB = formB;
-        this.BugService = BugService;
+        this.bugService = bugService;
         this.modalId = "bugModal";
-        // Create a temporary Bug to store initial Bug details
+        // Create a new instance of Bug with temporary placeholders
         this.currentBug = new bug_1.Bug(null, null, null, null, null, null, null, null, null);
     }
     /* Methods
-     * * * * * */
-=======
-var BugDetailComponent = (function () {
-    // Inject the FormBuilder module
-    function BugDetailComponent(formB) {
-        this.formB = formB;
-        this.modalId = "bugModal";
-    }
->>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
+     **********/
     BugDetailComponent.prototype.ngOnInit = function () {
         this.configureForm();
     };
@@ -64,26 +55,21 @@ var BugDetailComponent = (function () {
     };
     BugDetailComponent.prototype.submitForm = function () {
         console.log(this.bugForm); // in the console look at the _value property
-<<<<<<< HEAD
         this.addBug();
     };
     BugDetailComponent.prototype.addBug = function () {
-        // Create a bug Object from the form to pass into the addBug method within the Service
+        // create a Bug Object from our form that we can add via the Bug Service
         this.currentBug.title = this.bugForm.value['title'];
         this.currentBug.status = this.bugForm.value['status'];
         this.currentBug.severity = this.bugForm.value['severity'];
-        this.currentBug.description = this.bugForm.value['title'];
-        // The createdBy and createdDate have been set in the Service itself and
-        // are written to the DB
-        this.BugService.addBug(this.currentBug);
+        this.currentBug.description = this.bugForm.value['description'];
+        // createdBy / createdDate are set in the Service itself
+        this.bugService.addBug(this.currentBug);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], BugDetailComponent.prototype, "currentBug", void 0);
-=======
-    };
->>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
     BugDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -91,11 +77,7 @@ var BugDetailComponent = (function () {
             templateUrl: 'bug-detail.component.html',
             styleUrls: ['bug-detail.component.css']
         }), 
-<<<<<<< HEAD
         __metadata('design:paramtypes', [forms_1.FormBuilder, bug_service_1.BugService])
-=======
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
->>>>>>> f1167c893980a3ee1bc107b55796211b7f33d4d7
     ], BugDetailComponent);
     return BugDetailComponent;
 }());

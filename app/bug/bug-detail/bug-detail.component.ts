@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { forbiddenStringValidator } from '../../shared/validation/forbidden-string.validator';
+import { BugService } from '../service/bug.service';
+import { Bug } from '../model/bug';
 
 @Component({
     moduleId: module.id,
@@ -12,10 +14,15 @@ export class BugDetailComponent implements OnInit {
 
     private modalId = "bugModal";
     private bugForm: FormGroup;
+    // Create a new instance of Bug with temporary placeholders
+    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null)
 
-    // Inject the FormBuilder module
-    constructor(private formB: FormBuilder) { }
+    // Inject the FormBuilder module and Bug Service
+    constructor(private formB: FormBuilder, private bugService: BugService) { }
     
+    
+    /* Methods 
+     **********/
     ngOnInit() {
         this.configureForm();
     }
@@ -51,5 +58,18 @@ export class BugDetailComponent implements OnInit {
 
     submitForm() {
         console.log(this.bugForm); // in the console look at the _value property
+        this.addBug();
     }
+    
+    addBug() {
+        // create a Bug Object from our form that we can add via the Bug Service
+        this.currentBug.title       = this.bugForm.value['title'];
+        this.currentBug.status      = this.bugForm.value['status'];
+        this.currentBug.severity    = this.bugForm.value['severity'];
+        this.currentBug.description = this.bugForm.value['description'];
+        // createdBy / createdDate are set in the Service itself
+        this.bugService.addBug(this.currentBug);
+        
+    }
+
 }
