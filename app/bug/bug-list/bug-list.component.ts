@@ -21,15 +21,33 @@ export class BugListComponent implements OnInit {
         this.getAddedBugs();
     }
 
+
+    // Get Bugs onInit
     getAddedBugs() {
         this.bugService.getAddedBugs()
             .subscribe(bug => {
                 this.bugs.push(bug);
-                console.log(this.bugs);
             },
             err => {
                 console.error('Unable to get added bug:', err);
             });
+    }
+
+
+    // update Bugs
+    getUpdatedBug() {
+        this.bugService.changedListener()
+         .subscribe(updatedBug => {
+              this.bugs = this.bugs.map(bug => {
+                  if (bug.id === updatedBug.id) {
+                      return updatedBug;
+                  } else {
+                      return bug;
+                  }
+              });
+           }, err => {
+               console.error('unable to get updated bug - ', err);
+           });
     }
 
  }

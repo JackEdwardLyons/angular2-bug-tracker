@@ -4,9 +4,10 @@
     </div>
     <div class="col-xs-6 text-xs-right">
         <!-- Attribute binding with Angular template reference variable to modal box below -->
-        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            Add Bug
+        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " 
+                data-toggle="modal" (click)="bugDetail.refreshForm()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Add Bug
         </button>
     </div>
 </div>
